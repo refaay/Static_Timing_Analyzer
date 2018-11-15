@@ -1,0 +1,167 @@
+/* 
+* ******************************************************************************
+* *                                                                            *
+* *                   Copyright (C) 2004-2008, Nangate Inc.                    *
+* *                           All rights reserved.                             *
+* *                                                                            *
+* * Nangate and the Nangate logo are trademarks of Nangate Inc.                *
+* *                                                                            *
+* * All trademarks, logos, software marks, and trade names (collectively the   *
+* * "Marks") in this program are proprietary to Nangate or other respective    *
+* * owners that have granted Nangate the right and license to use such Marks.  *
+* * You are not permitted to use the Marks without the prior written consent   *
+* * of Nangate or such third party that may own the Marks.                     *
+* *                                                                            *
+* * This file has been provided pursuant to a License Agreement containing     *
+* * restrictions on its use.  This file contains valuable trade secrets and    *
+* * proprietary information of Nangate Inc., and is protected by U.S. and      *
+* * international laws and/or treaties.                                        *
+* *                                                                            *
+* * The copyright notice(s) in this file does not indicate actual or intended  *
+* * publication of this file.                                                  *
+* *                                                                            *
+* *           NGLibraryCreator Development_version build 0805160300            *
+* *                                                                            *
+* ******************************************************************************
+*
+* Spice engine            : Hspice A-2007.09
+* Liberty export type     : conditional
+*
+* Characterization Corner : fast
+* Process                 : FastFast
+* Temperature             : 0C
+* Voltage                 : 1.25V
+*
+****************************************************************************/
+
+library (NangateOpenCellLibrary_PDKv1.2_v2008_05) {
+
+  /* Documentation Attributes */
+  /* General Attributes */
+  technology              		  (cmos);
+  delay_model             		: table_lookup;
+  in_place_swap_mode      		: match_footprint;
+  library_features        		  (report_delay_calculation,report_power_calculation);
+
+  /* Units Attributes */
+  time_unit               		: "1ns";
+  leakage_power_unit      		: "1pW";
+  voltage_unit            		: "1V";
+  current_unit            		: "1uA";
+  pulling_resistance_unit 		: "1kohm";
+  capacitive_load_unit    		  (1,pf);
+
+  /* Operation Conditions */
+  nom_process             		: 1.00;
+  nom_temperature         		: 0.00;
+  nom_voltage             		: 1.25;
+
+  operating_conditions (FastFast_1.25V_0C) {
+    process     	: 1.00;
+    voltage     	: 1.25;
+    temperature 	: 0.00;
+    tree_type   	: balanced_tree;
+  }
+  default_operating_conditions : FastFast_1.25V_0C;
+
+  /* Threshold Definitions */
+  slew_lower_threshold_pct_fall 	: 30.00 ;
+  slew_lower_threshold_pct_rise 	: 30.00 ;
+  slew_upper_threshold_pct_fall 	: 70.00 ;
+  slew_upper_threshold_pct_rise 	: 70.00 ;
+  slew_derate_from_library      	: 1.00 ;
+  input_threshold_pct_fall      	: 50.00 ;
+  input_threshold_pct_rise      	: 50.00 ;
+  output_threshold_pct_fall     	: 50.00 ;
+  output_threshold_pct_rise     	: 50.00 ;
+  default_leakage_power_density 	: 0.00 ;
+  default_cell_leakage_power    	: 0.00 ;
+
+  /* Default Pin Attributes */
+  default_inout_pin_cap       		: 1.0;
+  default_input_pin_cap       		: 1.0;
+  default_output_pin_cap      		: 0.0;
+  default_fanout_load         		: 1.0;
+
+
+  lu_table_template (Timing_X1) {
+	variable_1 : input_net_transition;
+	variable_2 : total_output_net_capacitance;
+	index_1 ("0.007500,0.015000,0.030000,0.060000,0.120000,0.240000,0.480000,0.960000")
+	index_2 ("0.000400,0.000800,0.001600,0.003200,0.006400,0.012800")
+  }
+
+
+
+
+cell (AND2_X1) {
+
+	area               	: 1.064000;
+
+	cell_leakage_power 	: 28693.493432;
+
+	leakage_power () {
+		when      	: "!A1 & !A2";
+		value      	: 16941.264710;
+	}
+	leakage_power () {
+		when      	: "A1 & !A2";
+		value      	: 17704.637810;
+	}
+	leakage_power () {
+		when      	: "!A1 & A2";
+		value      	: 37167.808290;
+	}
+	leakage_power () {
+		when      	: "A1 & A2";
+		value      	: 42960.262920;
+	}
+
+	pin (A1) {
+
+		direction		: input;
+		capacitance		: 0.000476;
+		fall_capacitance	: 0.000460;
+		rise_capacitance	: 0.000492;
+		fall_capacitance_range		(0.000394, 0.000484);
+		rise_capacitance_range		(0.000391, 0.000580);
+		max_transition		: 0.960000;
+
+		internal_power () {
+
+			when      	: "!A2 & !ZN";
+
+			power(Hidden_Power_Data) {
+				values ("0.000038,0.000037,0.000019,0.000018,0.000017,0.000015,0.000011,0.000010");
+			}
+
+		}
+	}
+
+	pin (A2) {
+
+		direction		: input;
+		capacitance		: 0.000445;
+		fall_capacitance	: 0.000417;
+		rise_capacitance	: 0.000472;
+		fall_capacitance_range		(0.000365, 0.000434);
+		rise_capacitance_range		(0.000369, 0.000562);
+		max_transition		: 0.960000;
+
+		internal_power () {
+
+			when      	: "!A1 & !ZN";
+
+			power(Hidden_Power_Data) {
+				values ("0.000057,0.000052,0.000027,0.000024,0.000020,0.000016,0.000013,0.000009");
+			}
+
+		}
+	}
+
+
+
+
+}
+
+}

@@ -1,0 +1,45 @@
+.model rca4
+.inputs a<0> a<1> a<2> a<3> b<0> b<1> b<2> b<3> ci
+.outputs s<0> s<1> s<2> s<3> co
+.gate BUFX2 A=fa0.s Y=s<0>
+.gate BUFX2 A=fa1.s Y=s<1>
+.gate BUFX2 A=fa2.s Y=s<2>
+.gate BUFX2 A=fa3.s Y=s<3>
+.gate BUFX2 A=_0_ Y=co
+.gate INVX1 A=b<0> Y=_4_
+.gate OR2X2 A=ci B=a<0> Y=_5_
+.gate NAND2X1 A=ci B=a<0> Y=_6_
+.gate NAND3X1 A=_4_ B=_6_ C=_5_ Y=_7_
+.gate NOR2X1 A=ci B=a<0> Y=_1_
+.gate AND2X2 A=ci B=a<0> Y=_2_
+.gate OAI21X1 A=_1_ B=_2_ C=b<0> Y=_3_
+.gate NAND2X1 A=_3_ B=_7_ Y=fa0.s
+.gate OAI21X1 A=_4_ B=_1_ C=_6_ Y=c1
+.gate INVX1 A=b<1> Y=_11_
+.gate OR2X2 A=c1 B=a<1> Y=_12_
+.gate NAND2X1 A=c1 B=a<1> Y=_13_
+.gate NAND3X1 A=_11_ B=_13_ C=_12_ Y=_14_
+.gate NOR2X1 A=c1 B=a<1> Y=_8_
+.gate AND2X2 A=c1 B=a<1> Y=_9_
+.gate OAI21X1 A=_8_ B=_9_ C=b<1> Y=_10_
+.gate NAND2X1 A=_10_ B=_14_ Y=fa1.s
+.gate OAI21X1 A=_11_ B=_8_ C=_13_ Y=c2
+.gate INVX1 A=b<2> Y=_18_
+.gate OR2X2 A=c2 B=a<2> Y=_19_
+.gate NAND2X1 A=c2 B=a<2> Y=_20_
+.gate NAND3X1 A=_18_ B=_20_ C=_19_ Y=_21_
+.gate NOR2X1 A=c2 B=a<2> Y=_15_
+.gate AND2X2 A=c2 B=a<2> Y=_16_
+.gate OAI21X1 A=_15_ B=_16_ C=b<2> Y=_17_
+.gate NAND2X1 A=_17_ B=_21_ Y=fa2.s
+.gate OAI21X1 A=_18_ B=_15_ C=_20_ Y=c3
+.gate INVX1 A=b<3> Y=_25_
+.gate OR2X2 A=c3 B=a<3> Y=_26_
+.gate NAND2X1 A=c3 B=a<3> Y=_27_
+.gate NAND3X1 A=_25_ B=_27_ C=_26_ Y=_28_
+.gate NOR2X1 A=c3 B=a<3> Y=_22_
+.gate AND2X2 A=c3 B=a<3> Y=_23_
+.gate OAI21X1 A=_22_ B=_23_ C=b<3> Y=_24_
+.gate NAND2X1 A=_24_ B=_28_ Y=fa3.s
+.gate OAI21X1 A=_25_ B=_22_ C=_27_ Y=_0_
+.end

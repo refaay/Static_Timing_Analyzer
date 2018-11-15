@@ -1,0 +1,44 @@
+-------------------------Average ----------------------------
+18.778
+------------------------End Average -------------------------
+------------------------Circuit Paths ------------------------
+
+
+
+---------------------Path1(Most Critical Path)--------------------
+     NODE NAME  LIBRARY NAME  INSTANCE NAME  LATE SLACK  EARLY SLACK 
+            clk                                     -11.4177              0
+             ck        DFF_X80            FF1       -11.4177        19.3978
+              q        DFF_X80            FF1       -11.4177        19.3978
+              a         INV_X2           INV1       -11.4177        19.3978
+              o         INV_X2           INV1       -11.4177        19.3978
+              d        DFF_X80            FF2       -11.4177        19.3978
+---------------------Path2--------------------
+     NODE NAME  LIBRARY NAME  INSTANCE NAME  LATE SLACK  EARLY SLACK 
+            clk                                     -11.4177              0
+              a         BUF_X1          BUFF1       -8.25583             20
+              o         BUF_X1          BUFF1       -8.25583          48.46
+             ck        DFF_X80            FF2       -8.25583          63.46
+              q        DFF_X80            FF2       -8.25583          78.66
+              Y                                     -8.25583          93.66
+---------------------Path3--------------------
+     NODE NAME  LIBRARY NAME  INSTANCE NAME  LATE SLACK  EARLY SLACK 
+              A                                       23.425         -8.325
+              d        DFF_X80            FF1         23.425         -8.325
+---------------------end of Paths --------------------
+---------------------More than  average delay Paths --------------------
+--------------------
+            clk                                     -11.4177              0
+             ck        DFF_X80            FF1       -11.4177        19.3978
+              q        DFF_X80            FF1       -11.4177        19.3978
+              a         INV_X2           INV1       -11.4177        19.3978
+              o         INV_X2           INV1       -11.4177        19.3978
+              d        DFF_X80            FF2       -11.4177        19.3978
+--------------------
+            clk                                     -11.4177              0
+              a         BUF_X1          BUFF1       -8.25583             20
+              o         BUF_X1          BUFF1       -8.25583          48.46
+             ck        DFF_X80            FF2       -8.25583          63.46
+              q        DFF_X80            FF2       -8.25583          78.66
+              Y                                     -8.25583          93.66
+--------------------
